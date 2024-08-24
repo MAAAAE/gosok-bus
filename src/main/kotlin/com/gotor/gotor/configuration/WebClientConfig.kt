@@ -1,5 +1,6 @@
 package com.gotor.gotor.configuration
 
+import com.google.cloud.speech.v1.SpeechClient
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.client.WebClient
@@ -23,5 +24,10 @@ class WebClientConfig {
             .defaultHeader("Accept", "application/json")  // 기본 헤더 설정
             .build();
 
+    }
+
+    @Bean
+    fun speechClient(): SpeechClient {
+        return SpeechClient.create()
     }
 }
