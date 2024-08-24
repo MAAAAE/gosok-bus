@@ -1,12 +1,15 @@
 package com.gotor.gotor.service.stt
 
-import com.google.cloud.speech.v1.*
+import com.google.cloud.speech.v1.RecognitionAudio
+import com.google.cloud.speech.v1.RecognitionConfig
+import com.google.cloud.speech.v1.SpeechClient
+import com.google.cloud.speech.v1.SpeechRecognitionAlternative
+import com.google.cloud.speech.v1.SpeechRecognitionResult
 import com.google.protobuf.ByteString
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
-import javax.swing.text.html.HTML.Tag.P
 
 @Service
 class SttApiClientServiceImpl(

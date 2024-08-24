@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class BusServiceImpl(
     private val tmoneyService: TmoneyClientService
-): BusService {
+) : BusService {
     override fun getAllAvailableBusOption(openAIBusDto: OpenAIBusDto): List<BusOptionResponse> {
         val tmoneyBusResponse = tmoneyService.getAvailableBuses(openAIBusDto.toTmoneyBusRequest())
         return tmoneyBusResponse.map {

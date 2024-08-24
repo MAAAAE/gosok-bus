@@ -1,6 +1,5 @@
 package com.gotor.gotor.controller.stt
 
-import com.gotor.gotor.dto.bus.BusOptionResponse
 import com.gotor.gotor.dto.openai.OpenAIBusDto
 import com.gotor.gotor.service.bus.BusService
 import com.gotor.gotor.service.llm.LLMApiClientService
@@ -24,7 +23,7 @@ class SttController(
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
 
 
-    @PostMapping("/api/bus/available", consumes = [ "multipart/form-data" ] )
+    @PostMapping("/api/bus/available", consumes = ["multipart/form-data"])
     fun hello(@RequestParam voice: MultipartFile): ResponseEntity<OpenAIBusDto> {
         logger.info("[speech to text] API 호출됨.")
         val text = sttApiClientService.toText(voice)
