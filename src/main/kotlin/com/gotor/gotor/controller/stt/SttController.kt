@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -30,5 +31,10 @@ class SttController(
         val text = sttApiClientService.toText(voice)
         val mockRequest = llmApiClientService.parseText(text)
         return ResponseEntity.ok(busService.getAllAvailableBusOption(mockRequest))
+    }
+
+    @GetMapping("/api/test")
+    fun test():String {
+        return "test"
     }
 }
