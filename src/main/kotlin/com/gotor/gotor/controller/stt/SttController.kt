@@ -30,6 +30,7 @@ class SttController(
         logger.info("[speech to text] API 호출됨.")
         val text = sttApiClientService.toText(voice)
         val mockRequest = llmApiClientService.parseText(text)
+        logger.info("[parsing result] $mockRequest")
         return ResponseEntity.ok(busService.getAllAvailableBusOption(mockRequest))
     }
 
