@@ -25,7 +25,7 @@ class SttController(
 
 
     @PostMapping("/api/bus/available", consumes = ["multipart/form-data"])
-    fun hello(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
+    fun getAllAvailableBuses(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
         logger.info("[speech to text] API 호출됨.")
         val mockRequest = OpenAIBusDto(
             departDate = "20180101",
