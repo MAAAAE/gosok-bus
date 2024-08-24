@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
-@Tag(name = "Example API", description = "This API provides examples of different operations.")
+@Tag(name = "STT API", description = "음성파일을 인식해서 결괏값 반환")
 @RestController
 class SttController(
-    private val sttApiClientService: SttApiClientService,
     private val busService: BusService
 ) {
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
 
 
-    @PostMapping("/api/stt")
+    @PostMapping("/api/bus/available")
     fun hello(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
         logger.info("[speech to text] API 호출됨.")
-        val text = sttApiClientService.toText(voice)
+        val text = "서울에서 부산까지 가장 빨리 가는 버스 한장"
         val mockRequest = OpenAIBusDto(
             departDate = "20180101",
             departTime = "1100",
