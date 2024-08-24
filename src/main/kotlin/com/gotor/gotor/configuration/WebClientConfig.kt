@@ -20,14 +20,8 @@ class WebClientConfig {
     @Bean
     fun openaiClient(): WebClient {
         return WebClient.builder()
-            .baseUrl("https://openai.com")
+            .baseUrl("http://127.0.0.1:5000")
             .defaultHeader("Accept", "application/json")  // 기본 헤더 설정
             .build();
-
-    }
-
-    @Bean
-    fun speechClient(): SpeechClient {
-        return SpeechClient.create()
     }
 }
