@@ -27,7 +27,11 @@ class SttController(
 
     @PostMapping("/api/bus/available", consumes = ["multipart/form-data"])
     fun getAllAvailableBuses(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
-        logger.info("[speech to text] API 호출됨.")
+        logger.info("[speech to text] API 호출됨. size: ${voice.size} / name: ${voice.name}")
+        if (voice.isEmpty) {
+            logger.info("[speech to text] 파일이 비어있으므로 종료")
+            return ResponseEntity.ok(emptyList())
+        };
         val text = sttApiClientService.toText(voice)
         val mockRequest = llmApiClientService.parseText(text)
         logger.info("[parsing result] $mockRequest")
