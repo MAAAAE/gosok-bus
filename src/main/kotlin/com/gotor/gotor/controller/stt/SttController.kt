@@ -21,7 +21,7 @@ class SttController(
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
 
 
-    @PostMapping("/api/bus/available")
+    @PostMapping("/api/bus/available", consumes = [ "multipart/form-data" ] )
     fun hello(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
         logger.info("[speech to text] API 호출됨.")
         val text = "서울에서 부산까지 가장 빨리 가는 버스 한장"
