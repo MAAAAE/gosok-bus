@@ -1,10 +1,12 @@
-package com.gotor.gotor.controller
+package com.gotor.gotor.controller.stt
 
-import com.gotor.gotor.service.SttApiClientService
+import com.gotor.gotor.service.stt.SttApiClientService
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
 @Tag(name = "Example API", description = "This API provides examples of different operations.")

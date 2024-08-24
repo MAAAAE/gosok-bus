@@ -1,4 +1,4 @@
-package com.gotor.gotor.service
+package com.gotor.gotor.service.stt
 
 import com.google.cloud.speech.v1.*
 import com.google.protobuf.ByteString

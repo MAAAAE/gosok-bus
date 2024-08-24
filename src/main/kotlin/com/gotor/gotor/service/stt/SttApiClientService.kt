@@ -1,4 +1,4 @@
-package com.gotor.gotor.service
+package com.gotor.gotor.service.stt
 
 import org.springframework.web.multipart.MultipartFile
 
