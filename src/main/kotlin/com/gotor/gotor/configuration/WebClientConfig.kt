@@ -1,5 +1,6 @@
 package com.gotor.gotor.configuration
 
+import com.google.cloud.speech.v1.SpeechClient
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.client.WebClient

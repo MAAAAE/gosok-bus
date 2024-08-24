@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile
 @Tag(name = "STT API", description = "음성파일을 인식해서 결괏값 반환")
 @RestController
 class SttController(
-    private val sttApiClientService: SttApiClientService
+    private val sttApiClientService: SttApiClientService,
     private val busService: BusService
 ) {
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
