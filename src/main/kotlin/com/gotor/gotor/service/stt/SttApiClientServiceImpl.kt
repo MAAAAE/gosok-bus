@@ -25,8 +25,8 @@ class SttApiClientServiceImpl(
             val audioBytes: ByteString = ByteString.copyFrom(voice.getBytes())
 
             val recognitionConfig: RecognitionConfig = RecognitionConfig.newBuilder()
-                .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16) // 파일 포맷에 따라 변경
-                .setSampleRateHertz(48000) // 오디오 샘플링 주파수
+                .setEncoding(RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED) // 파일 포맷에 따라 변경
+//                .setSampleRateHertz(48000) // 오디오 샘플링 주파수
                 .setLanguageCode("ko-KR") // 언어 코드 설정
                 .build()
 
@@ -37,8 +37,9 @@ class SttApiClientServiceImpl(
             // Performs speech recognition on the audio file
 
             // Performs speech recognition on the audio file
+            val recognize = speechClient.recognize(recognitionConfig, recognitionAudio)
             val results: List<SpeechRecognitionResult> =
-                speechClient.recognize(recognitionConfig, recognitionAudio).resultsList
+                recognize.resultsList
             for (result in results) {
                 // There can be several alternative transcripts for a given chunk of speech. Just use the
                 // first (most likely) one here.
@@ -49,6 +50,6 @@ class SttApiClientServiceImpl(
         } catch (e: Exception) {
             logger.error("[speech to text] exception message: ${e.message}")
         }
-        return "오류가 발생했습니다."
+        throw Exception("예외 발생")
     }
 }
