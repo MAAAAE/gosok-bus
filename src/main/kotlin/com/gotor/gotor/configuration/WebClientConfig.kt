@@ -20,7 +20,7 @@ class WebClientConfig {
     @Bean
     fun openaiClient(): WebClient {
         return WebClient.builder()
-            .baseUrl("http://127.0.0.1:5000")
+            .baseUrl("http://gotor-engine:5000")
             .defaultHeader("Accept", "application/json")  // 기본 헤더 설정
             .build();
     }
