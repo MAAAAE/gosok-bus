@@ -26,8 +26,8 @@ class WebClientConfig {
 
     }
 
-    @Bean
-    fun speechClient(): SpeechClient {
-        return SpeechClient.create()
-    }
+//    @Bean
+//    fun speechClient(): SpeechClient {
+//        return SpeechClient.create()
+//    }
 }

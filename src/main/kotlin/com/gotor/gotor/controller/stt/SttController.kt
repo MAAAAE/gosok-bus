@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
-@Tag(name = "Example API", description = "This API provides examples of different operations.")
+@Tag(name = "STT API", description = "음성파일을 문자열로 변환")
 @RestController
 class SttController(
-    private val sttApiClientService: SttApiClientService
+//    private val sttApiClientService: SttApiClientService
 ) {
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
 
@@ -20,6 +20,6 @@ class SttController(
     @PostMapping("/api/stt")
     fun hello(@RequestParam voice: MultipartFile): String {
         logger.info("[speech to text] API 호출됨.")
-        return sttApiClientService.toText(voice)
+        return "서울에서 창원까지 오늘 가장 빠른 버스 해줘"
     }
 }
