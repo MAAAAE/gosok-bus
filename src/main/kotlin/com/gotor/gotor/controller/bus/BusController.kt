@@ -21,10 +21,10 @@ class BusController(
     @PostMapping("/api/bus/reservation")
     fun reserveBus(@RequestBody busRequest: BusReservationRequest): ResponseEntity<ByteArray> {
         val ticketImage = busService.makeBusReservation(busRequest)
-        val fileName = FileUtils.generateFileNameWithDate("pdf")
+        val fileName = FileUtils.generateFileNameWithDate("png")
         return ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"$fileName\"")
-            .contentType(MediaType.APPLICATION_PDF)
+            .contentType(MediaType.IMAGE_PNG)
             .body(ticketImage)
     }
 }

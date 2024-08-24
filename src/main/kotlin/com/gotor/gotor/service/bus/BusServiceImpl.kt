@@ -24,7 +24,7 @@ class BusServiceImpl(
     override fun makeBusReservation(busReservationRequest: BusReservationRequest): ByteArray? {
         // TODO: Make Real reservation
         return try {
-            val imgFile = ClassPathResource("static/mockup_cut.pdf")
+            val imgFile = ClassPathResource("static/ticket.png")
             imgFile.inputStream.readBytes()
         } catch (ex: IOException) {
             null
