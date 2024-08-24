@@ -18,7 +18,6 @@ class SwaggerConfig {
                     .title("Gotor Swagger UI")
                     .description("This is Gotor API Specification")
                     .version("v1.0.0")
-                    .contact(Contact().name("API Support").url("http://example.com").email("support@example.com"))
                     .license(License().name("Apache 2.0").url("http://springdoc.org"))
             )
     }
