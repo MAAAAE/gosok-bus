@@ -4,12 +4,12 @@ import com.gotor.gotor.dto.bus.BusOptionResponse
 import com.gotor.gotor.dto.openai.OpenAIBusDto
 import com.gotor.gotor.dto.openai.toTmoneyBusRequest
 import com.gotor.gotor.dto.tmoney.toBusOptionResponse
-import com.gotor.gotor.service.tmoney.TmoneyService
+import com.gotor.gotor.service.tmoney.TmoneyClientService
 import org.springframework.stereotype.Service
 
 @Service
 class BusServiceImpl(
-    private val tmoneyService: TmoneyService
+    private val tmoneyService: TmoneyClientService
 ): BusService {
     override fun getAllAvailableBusOption(openAIBusDto: OpenAIBusDto): List<BusOptionResponse> {
         val tmoneyBusResponse = tmoneyService.getAvailableBuses(openAIBusDto.toTmoneyBusRequest())

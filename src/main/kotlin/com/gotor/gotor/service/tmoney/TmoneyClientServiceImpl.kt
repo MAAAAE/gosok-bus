@@ -6,7 +6,7 @@ import com.gotor.gotor.dto.tmoney.getMockData
 import org.springframework.stereotype.Service
 
 @Service
-class TmoneyServiceImpl : TmoneyService {
+class TmoneyClientServiceImpl : TmoneyClientService {
     override fun getAvailableBuses(request: TmoneyBusRequest): List<SubResult> {
         return getMockData().response.subResultList
     }
