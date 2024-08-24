@@ -3,6 +3,7 @@ package com.gotor.gotor.controller.stt
 import com.gotor.gotor.dto.bus.BusOptionResponse
 import com.gotor.gotor.dto.openai.OpenAIBusDto
 import com.gotor.gotor.service.bus.BusService
+import com.gotor.gotor.service.llm.LLMApiClientService
 import com.gotor.gotor.service.stt.SttApiClientService
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
@@ -16,22 +17,18 @@ import org.springframework.web.multipart.MultipartFile
 @Tag(name = "STT API", description = "음성파일을 인식해서 결괏값 반환")
 @RestController
 class SttController(
-    private val busService: BusService
+    private val sttApiClientService: SttApiClientService,
+    private val busService: BusService,
+    private val llmApiClientService: LLMApiClientService
 ) {
     private val logger: Logger = LoggerFactory.getLogger(SttController::class.java)
 
 
-    @PostMapping("/api/bus/available", consumes = [ "multipart/form-data" ] )
+    @PostMapping("/api/bus/available", consumes = ["multipart/form-data"])
     fun hello(@RequestParam voice: MultipartFile): ResponseEntity<List<BusOptionResponse>> {
         logger.info("[speech to text] API 호출됨.")
-        val text = "서울에서 부산까지 가장 빨리 가는 버스 한장"
-        val mockRequest = OpenAIBusDto(
-            departDate = "20180101",
-            departTime = "1100",
-            to = "서울경부",
-            from = "부산",
-            departOption = "0"
-        )
+        val text = sttApiClientService.toText(voice)
+        val mockRequest = llmApiClientService.parseText(text)
         return ResponseEntity.ok(busService.getAllAvailableBusOption(mockRequest))
     }
 }

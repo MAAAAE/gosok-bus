@@ -37,6 +37,7 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
     }
+
 }
 
 tasks.withType<Test> {
