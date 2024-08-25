@@ -17,7 +17,7 @@ class BusServiceImpl(
     override fun getAllAvailableBusOption(openAIBusDto: OpenAIBusDto): List<BusOptionResponse> {
         val tmoneyBusResponse = tmoneyService.getAvailableBuses(openAIBusDto.toTmoneyBusRequest())
         return tmoneyBusResponse.map {
-            it.toBusOptionResponse()
+            it.toBusOptionResponse(openAIBusDto=openAIBusDto)
         }.toList()
     }
 
